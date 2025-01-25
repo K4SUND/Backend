@@ -13,6 +13,8 @@ public class Item {
 //    private int userId;
 //    private int locationId;
     private String brand;
+
+
     private String model;
     private String description;
     private double price;
