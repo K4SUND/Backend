@@ -4,7 +4,7 @@ package com.example.demo.rest;
 import com.example.demo.model.Item;
 import com.example.demo.model.Location;
 import com.example.demo.model.User;
-import com.example.demo.service.FileStorageService;
+import com.example.demo.service.FirebaseStorageService;
 import com.example.demo.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,14 +18,16 @@ import java.util.List;
 public class ItemController {
 
    private ItemService itemService;
-   private FileStorageService fileStorageService;
+
+   private  FirebaseStorageService firebaseStorageService;
 
 
    @Autowired
-    public ItemController(ItemService itemService, FileStorageService fileStorageService) {
+    public ItemController(ItemService itemService, FirebaseStorageService firebaseStorageService) {
         this.itemService = itemService;
-        this.fileStorageService = fileStorageService;
+        this.firebaseStorageService = firebaseStorageService;
     }
+
 
 
 //    @CrossOrigin(origins = "http://localhost:3000")
@@ -70,14 +72,15 @@ public class ItemController {
                                            @RequestParam("file") MultipartFile file)
     {
 
-        String filename = fileStorageService.storeFile(file);
+//        String filename = fileStorageService.storeFile(file);
+        String filename = firebaseStorageService.uploadImage(file);
 
         Item item = new Item();
         item.setBrand(brand);
         item.setModel(model);
         item.setDescription(description);
         item.setPrice(price);
-        item.setImageUrl("https://speedlk.s3.amazonaws.com/" + filename);
+        item.setImageUrl(filename);
         item.setUser(new User(userId));
         item.setLocation(new Location(locationId));
 
@@ -93,8 +96,9 @@ public class ItemController {
     {
         Item item = itemService.getItemByID(id);
         String imageUrl = item.getImageUrl();
+
         String fileName = imageUrl.substring(imageUrl.lastIndexOf("/")+1);
-        fileStorageService.deleteFile(fileName);
+        firebaseStorageService.deleteImage(fileName);
         return new ResponseEntity<>(itemService.deleteById(id),HttpStatus.OK);
     }
 
@@ -144,13 +148,13 @@ public class ItemController {
         {
             String oldImageUrl = item.getImageUrl();
             String fileName = oldImageUrl.substring(oldImageUrl.lastIndexOf("/")+1);
-            fileStorageService.deleteFile(fileName);
+            firebaseStorageService.deleteImage(fileName);
 
 
 
 
-            String newFileName = fileStorageService.storeFile(file);
-            item.setImageUrl("https://speedlk.s3.amazonaws.com/"+newFileName);
+            String newFileName = firebaseStorageService.uploadImage(file);
+            item.setImageUrl(newFileName);
         }
 
         String response = itemService.updateItem(item);
