@@ -77,7 +77,7 @@ public class ItemController {
         item.setModel(model);
         item.setDescription(description);
         item.setPrice(price);
-        item.setImageUrl("https://speedlk.s3.amazonaws.com/" + filename);
+        item.setImageUrl(filename);
         item.setUser(new User(userId));
         item.setLocation(new Location(locationId));
 
@@ -93,6 +93,7 @@ public class ItemController {
     {
         Item item = itemService.getItemByID(id);
         String imageUrl = item.getImageUrl();
+
         String fileName = imageUrl.substring(imageUrl.lastIndexOf("/")+1);
         fileStorageService.deleteFile(fileName);
         return new ResponseEntity<>(itemService.deleteById(id),HttpStatus.OK);
@@ -150,7 +151,7 @@ public class ItemController {
 
 
             String newFileName = fileStorageService.storeFile(file);
-            item.setImageUrl("https://speedlk.s3.amazonaws.com/"+newFileName);
+            item.setImageUrl(newFileName);
         }
 
         String response = itemService.updateItem(item);
