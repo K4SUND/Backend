@@ -1,0 +1,52 @@
+.dropdown{
+    display: inline-block;
+}
+
+.dropdown button{
+
+    background-color: black;
+    color: azure;
+    padding: 10px 15px;
+    border:none ;
+    cursor: pointer;
+
+}
+
+.dropdown a{
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 10px 15px;
+
+
+}
+
+.dropdown .content{
+
+    position: absolute;
+  
+    /* background-color: bg-gradient-to-r from-green-300 to-blue-700; */
+    min-width: 80px;
+    box-shadow: 2px 2px 5px black;
+    display: none;
+
+}
+
+.dropdown:hover .content{
+
+    display: block;
+    
+
+}
+
+.dropdown:hover button{
+
+    background-color: blue;
+}
+
+.dropdown a:hover{
+
+    background-color: white;
+    color: rgb(13, 5, 234);
+    border-radius: 10px;
+}
