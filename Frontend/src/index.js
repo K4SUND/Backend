@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { AuthProvider } from './AuthContext';
-import { Route, Router, Routes } from 'react-router-dom';
-import Home from './Pages/Home';
+// import { Route, Router, Routes } from 'react-router-dom';
+// import Home from './Pages/Home';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

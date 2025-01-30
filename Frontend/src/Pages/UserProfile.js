@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Nav3 from '../Components/Nav3';
 import ItemsByUser from '../Components/ItemsByUser';
 import UpdateUser from '../Components/UpdateUser';
-import { useLocation, useNavigate } from 'react-router-dom';
+// import { useLocation, useNavigate } from 'react-router-dom';
 
 
 export default function UserProfile
@@ -29,7 +29,7 @@ export default function UserProfile
               }
                 */
 
-    },[activeTab1])
+    },[activeTab1],[user]);
 
   return (
     <div>
@@ -45,13 +45,16 @@ export default function UserProfile
         
         <li class="me-2" role="presentation">
             <button
-             class={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab=='profile'?'border-blue-600':'border-transparent'}`}
+             class={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab==='profile'?'border-blue-600':'border-transparent'}`}
              id="profile-tab"               
              type="button" 
              role="tab" 
              aria-controls="profile" 
              aria-selected={activeTab==='profile'}
-             onClick={()=>setActiveTab('profile')}>
+             onClick={()=>{
+              setActiveTab('profile');
+              setUser(JSON.parse(localStorage.getItem('user')));
+             }}>
              Profile
              </button>             
         </li>
@@ -59,7 +62,7 @@ export default function UserProfile
 
         <li class="me-2" role="presentation">
         <button
-             class={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab=='settings'?'border-blue-600':'border-transparent'}`}
+             class={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab==='settings'?'border-blue-600':'border-transparent'}`}
              id="settings-tab"               
              type="button" 
              role="tab" 
@@ -73,7 +76,7 @@ export default function UserProfile
 
         <li class="me-2" role="presentation">
         <button
-             class={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab=='myads'?'border-blue-600':'border-transparent'}`}
+             class={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab==='myads'?'border-blue-600':'border-transparent'}`}
              id="myads-tab"               
              type="button" 
              role="tab" 

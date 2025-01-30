@@ -34,7 +34,7 @@ export default function UpdateUser
                
             }
 
-    },[]); 
+    },[user]); 
 
     const update = async(e)=>{
         
@@ -61,6 +61,8 @@ export default function UpdateUser
             // const response = await axios.put("http://localhost:8080/user",userData);
             const response = await axios.put(`${baseURL}/user`,userData);
             login(response.data);
+            console.log(response.data);
+            // setUser(response.data);
             setShowError(false);
             setShowSuccess(true);
 
