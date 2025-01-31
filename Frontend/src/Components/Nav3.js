@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 export default function Nav3
 () {
@@ -11,6 +11,7 @@ export default function Nav3
   useEffect(()=>{
 
     console.log(baseURL);
+
   });
 
  

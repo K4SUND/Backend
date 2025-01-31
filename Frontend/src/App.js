@@ -14,6 +14,8 @@ import ItemUpdate from './Pages/ItemUpdate';
 import Footer from './Components/Footer';
 import About from './Pages/About';
 import Services from './Pages/Services';
+import Layout from './Components/Layout';
+import ExchangeCurrency from './Pages/ExchangeCurrency';
 
 
 
@@ -22,7 +24,7 @@ function App() {
     <div>
     
     
-    
+    <Layout>
     <Router>
       <Routes>
         <Route path='/' element={<Home/>}></Route>
@@ -40,6 +42,7 @@ function App() {
         <Route path ='/ItemUpdate/:id' element={<ItemUpdate/>}></Route>
         <Route path ='/About' element = {<About/>}></Route>
         <Route path = '/Services' element = {<Services/>}></Route>
+        <Route path = '/exchangeService' element = {<ExchangeCurrency/>}></Route>
         
 
 
@@ -47,10 +50,11 @@ function App() {
 
       </Routes>
     </Router>
+    </Layout>
     
     
     
-    <Footer/>  
+    {/* <Footer/>   */}
     </div>
   );
 }

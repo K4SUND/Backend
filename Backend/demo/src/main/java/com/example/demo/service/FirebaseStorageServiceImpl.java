@@ -62,7 +62,22 @@ public class FirebaseStorageServiceImpl implements FirebaseStorageService {
 
     @Override
     public String deleteImage(String fileName) {
-        storageClient.bucket().get(fileName).delete();
+
+        if (fileName.contains("storage.googleapis.com"))
+        {
+        fileName = fileName.substring(fileName.lastIndexOf("/") + 1);
+        if (fileName.contains("?")) {
+            fileName = fileName.substring(0, fileName.indexOf("?"));
+        }
+        }
+
+        Blob blob = storageClient.bucket().get(fileName);
+        if(blob == null)
+        {
+            throw new RuntimeException("File not found: "+ fileName);
+
+        }
+        blob.delete();
         return "File deleted successfully";
     }
 }

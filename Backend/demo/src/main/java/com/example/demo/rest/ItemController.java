@@ -97,8 +97,8 @@ public class ItemController {
         Item item = itemService.getItemByID(id);
         String imageUrl = item.getImageUrl();
 
-        String fileName = imageUrl.substring(imageUrl.lastIndexOf("/")+1);
-        firebaseStorageService.deleteImage(fileName);
+//        String fileName = imageUrl.substring(imageUrl.lastIndexOf("/")+1);
+        firebaseStorageService.deleteImage(imageUrl);
         return new ResponseEntity<>(itemService.deleteById(id),HttpStatus.OK);
     }
 
