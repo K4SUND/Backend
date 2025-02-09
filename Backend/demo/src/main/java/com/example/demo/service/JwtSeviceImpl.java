@@ -5,7 +5,9 @@ import com.example.demo.model.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
@@ -18,13 +20,16 @@ public class JwtSeviceImpl implements JwtService {
 
 
     UserDAO userDAO;
+    PasswordEncoder passwordEncoder;
 
     final SecretKey key;
 
 
-    public JwtSeviceImpl(UserDAO userDAO, @Value("${jwt.secret}")String secret) {
+    @Autowired
+    public JwtSeviceImpl(UserDAO userDAO, @Value("${jwt.secret}")String secret, PasswordEncoder passwordEncoder) {
         this.userDAO = userDAO;
         this.key = Keys.hmacShaKeyFor(secret.getBytes());
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -42,8 +47,11 @@ public class JwtSeviceImpl implements JwtService {
         String realPassword = user.getPassword();
 
 
+
+
+
         //authentication
-        if(Objects.equals(realPassword, password))
+        if(passwordEncoder.matches(password,realPassword))
         {
             //user authenticated
             //generate token  that include this user

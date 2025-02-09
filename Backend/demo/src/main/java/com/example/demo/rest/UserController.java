@@ -51,9 +51,10 @@ public class UserController {
     public ResponseEntity<String> updateUser(@RequestBody User user1)
     {
 
+        String password = user1.getPassword();
         String success = user.addUser(user1);
         String email = user1.getEmail();
-        String password = user1.getPassword();
+
 
         String generateToken = jwtService.generateToken(email,password);
 

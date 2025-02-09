@@ -118,13 +118,13 @@ export default function UpdateUser
         <div>
             
             <label for="countries" class="block mb-3 text-sm font-medium text-gray-900 dark:text-white">New password</label>
-            <input  rows="1" class="block w-50 p-1  text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e)=>{setPassword(e.target.value)}} placeholder='Enter new password' required></input>          
+            <input  type="password" rows="1" class="block w-50 p-1  text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e)=>{setPassword(e.target.value)}} placeholder='Enter new password'  required></input>          
                
         </div> 
         
         <div>
             <label for="countries" class="block mb-3 text-sm font-medium text-gray-900 dark:text-white">Confirm new password</label>
-            <input  rows="1" class="block w-50 p-1  text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e)=>{setConfirmPass(e.target.value)}} placeholder='Confirm new password' required></input>          
+            <input  type="password" rows="1" class="block w-50 p-1  text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e)=>{setConfirmPass(e.target.value)}} placeholder='Confirm new password' required></input>          
                
         </div>
         
