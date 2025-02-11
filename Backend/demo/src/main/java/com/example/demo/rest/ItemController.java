@@ -146,9 +146,9 @@ public class ItemController {
 
         if(file!=null)
         {
-            String oldImageUrl = item.getImageUrl();
-            String fileName = oldImageUrl.substring(oldImageUrl.lastIndexOf("/")+1);
-            firebaseStorageService.deleteImage(fileName);
+            String imageUrl = item.getImageUrl();
+//            String fileName = oldImageUrl.substring(oldImageUrl.lastIndexOf("/")+1);
+            firebaseStorageService.deleteImage(imageUrl);
 
 
 

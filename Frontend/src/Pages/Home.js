@@ -68,7 +68,7 @@ export default function Home
     {
         setError(err);
         // console.log("error here");
-        alert("Error in fetching data");
+        alert("Please enter valid province and district");
         setLocationId(null);
     }
    
